@@ -4,6 +4,7 @@ import {
   CharacterDetail,
   PlayerCard,
 } from '@/components/card';
+import { GiscusComment } from '@/components/giscus';
 import { useIsomorphicLayoutEffect } from '@/hooks';
 import { cn, createQueryString, removeQueryString } from '@/libs';
 import { ApiService } from '@/services';
@@ -75,8 +76,8 @@ const Page = (
       {/* SEO */}
       <NextSeo title={player.username + `'s Build`} />
 
-      <div className='base-container flex max-w-screen-lg flex-col items-center'>
-        <h1 className='sr-only'>{player.username}&apos;s Build</h1>
+      <div className='base-container flex max-w-screen-lg flex-col space-y-20'>
+        <h1 className='text-center text-4xl'>{player.username}&apos;s Build</h1>
 
         {selectedChar ? (
           <>
@@ -120,6 +121,8 @@ const Page = (
             </div>
           </div>
         )}
+
+        <GiscusComment term='Profile Comment' />
       </div>
     </>
   );

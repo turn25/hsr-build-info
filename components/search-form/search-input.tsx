@@ -1,3 +1,4 @@
+import { cn } from '@/libs';
 import { Input } from '@/ui/input';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import {
@@ -41,16 +42,14 @@ const SearchInput = forwardRef<ComponentRef<typeof Input>, SearchInputProps>(
           {...rest}
         />
 
-        <button
-          onClick={(e) => {
-            if (hasError) {
-              e.preventDefault();
-              e.stopPropagation();
-            }
-          }}
-          type='submit'
-        >
-          <kbd className='absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-lg bg-white px-1.5 py-1 text-sm uppercase text-text-bold shadow-small'>
+        <button type='submit'>
+          <kbd
+            className={cn(
+              'absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-lg bg-white px-1.5 py-1 text-sm uppercase text-text-bold shadow-small transition-all hover:bg-white/90 active:scale-95',
+              !isFocus && 'pointer-events-none',
+              !hasError && 'pointer-events-auto'
+            )}
+          >
             {isFocus ? (hasError ? 'ESC' : 'Enter') : cmdkText}
           </kbd>
         </button>

@@ -77,3 +77,11 @@
   --background: 240 10% 3.9%;
   --border: 240 3.7% 15.9%;
 }
+
+.gsc-reactions {
+  color: red;
+}
+
+.gsc-reactions-count {
+  color: red !important;
+}

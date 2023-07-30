@@ -1,4 +1,5 @@
 import { FollowCard } from '@/components/card';
+import { GiscusComment } from '@/components/giscus';
 import { GithubIcon } from '@/components/icons';
 import { HertaDance } from '@/components/image';
 import { SearchForm } from '@/components/search-form';
@@ -32,6 +33,8 @@ const HomePage = () => {
           description='To report bugs, request features, or contribute to this project...'
         />
       </div>
+
+      <GiscusComment />
     </div>
   );
 };

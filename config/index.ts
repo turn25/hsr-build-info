@@ -4,6 +4,13 @@ export const config = {
   github: {
     author: 'turn25',
     githubAuthorUrl: 'https://github.com/turn25',
-    githubRepoUrl: 'https://github.com/turn25',
+    githubRepoUrl: 'https://github.com/turn25/hsr-build-info',
+  },
+  /** @type {import('@giscus/react').GiscusProps} */
+  giscus: {
+    repo: 'turn25/hsr-build-info',
+    repoId: 'R_kgDOKBaoQQ',
+    category: 'General',
+    categoryId: 'DIC_kwDOKBaoQc4CYOnc',
   },
 };
