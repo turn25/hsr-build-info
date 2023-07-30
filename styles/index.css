@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --contrast: #000;
+    --primary: 188deg 56% 52%;
+    --border: #424242;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    border-color: var(--border);
+    color: var(--contrast);
+    -webkit-tap-highlight-color: transparent;
+    outline-color: transparent;
+  }
+  body {
+    overflow-y: scroll;
+  }
+  a,
+  button {
+    cursor: pointer;
+    user-select: none;
+  }
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+@layer components {
+  .base-container {
+    @apply mx-auto box-border block w-full max-w-screen-md px-6;
+  }
+
+  .background {
+    @apply bg-background backdrop-blur-xl backdrop-saturate-150;
+  }
+}
+
+@layer utilities {
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .inset-0 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .sr-only + * {
+    @apply !mt-0;
+  }
+
+  .animate-in,
+  .animate-out {
+    animation-fill-mode: both;
+  }
+}
+
+[data-theme='dark'] {
+  --contrast: #fff;
+  --background: 240 10% 3.9%;
+  --border: 240 3.7% 15.9%;
+}
