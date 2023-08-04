@@ -20,7 +20,9 @@ export const characterMapper = (characters: Profile['characters']) => {
               ? attribute.value
               : addition.value + attribute.value;
         } else {
-          total = attribute.value;
+          total = addition?.value
+            ? attribute.value + addition?.value
+            : attribute.value;
         }
 
         return {

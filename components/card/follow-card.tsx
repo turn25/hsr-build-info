@@ -20,7 +20,7 @@ const FollowCard = (props: FollowCardProps) => {
 
   return (
     <Comp
-      className='cursor-pointer select-none space-y-1 rounded-2xl bg-background/25 pb-6 pt-3 shadow-medium backdrop-blur-lg transition-all hover:bg-black/40 active:scale-95'
+      className='cursor-pointer select-none space-y-1 rounded-2xl bg-background/25 pb-6 pt-3 text-left shadow-medium backdrop-blur-lg transition-all hover:bg-black/40 active:scale-95'
       {...rest}
     >
       <div className='flex items-center space-x-2 px-3'>

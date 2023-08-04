@@ -33,6 +33,8 @@ const SearchInput = forwardRef<ComponentRef<typeof Input>, SearchInputProps>(
           ref={ref}
           className='z-0 w-full cursor-pointer pl-10 pr-12'
           placeholder='Enter UID, eg: 811111111'
+          autoComplete='false'
+          autoCorrect='false'
           onFocusCapture={() => {
             setIsFocus(true);
           }}

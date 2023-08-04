@@ -19,7 +19,6 @@ export class PlayerService {
         params: { lang: languague },
       });
       const data = response.data as Profile;
-
       // const data = (await import('@/public/mock.json')).default as Profile;
 
       const player = data.player;
@@ -32,9 +31,8 @@ export class PlayerService {
         player: mappedPlayer,
         characters: mappedCharacters,
       };
-
-      // return response.data;
-    } catch {
+    } catch (e) {
+      console.log(e);
       return null;
     }
   }

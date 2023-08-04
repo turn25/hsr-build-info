@@ -12,6 +12,7 @@
     "@giscus/react": "^2.3.0",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.1.1",
+    "@radix-ui/react-portal": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.6",
     "axios": "^1.4.0",
@@ -24,6 +25,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
+    "react-remove-scroll": "^2.5.6",
     "tailwind-merge": "^1.14.0",
     "zod": "^3.21.4",
     "zustand": "^4.3.9"

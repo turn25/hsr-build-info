@@ -1,9 +1,5 @@
-import { FollowCard } from '@/components/card';
 import { GiscusComment } from '@/components/giscus';
-import { GithubIcon } from '@/components/icons';
-import { HertaDance } from '@/components/image';
 import { SearchForm } from '@/components/search-form';
-import { config } from '@/config';
 
 const HomePage = () => {
   return (
@@ -14,7 +10,7 @@ const HomePage = () => {
 
       <SearchForm />
 
-      <div className='grid grid-cols-2 gap-4'>
+      {/* <div className='grid grid-cols-2 gap-4'>
         <FollowCard
           href={config.github.githubAuthorUrl}
           target='_blank'
@@ -32,7 +28,7 @@ const HomePage = () => {
           iconText='Project Repo'
           description='To report bugs, request features, or contribute to this project...'
         />
-      </div>
+      </div> */}
 
       <GiscusComment />
     </div>

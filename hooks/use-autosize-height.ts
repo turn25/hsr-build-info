@@ -14,8 +14,6 @@ const useAutosizeHeight = () => {
     )
       return;
 
-    console.log('bruh');
-
     let animationFrame;
     const el = elementRef;
     const wrapper = wrapperRef;

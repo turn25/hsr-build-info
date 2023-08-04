@@ -1,6 +1,6 @@
 import '@/styles/index.css';
 
-import { MainLayout } from '@/components/layouts';
+import { LoadingOverlay, MainLayout } from '@/components/layouts';
 import { defaultSEOConfig } from '@/components/seo';
 import { SRFont } from '@/libs';
 import { DefaultSeo } from 'next-seo';
@@ -26,7 +26,8 @@ const MyApp = (props: AppProps) => {
         attribute='data-theme'
         defaultTheme='dark'
       >
-        <NextNProgress color='hsl(var(--primary))' />
+        <NextNProgress color='hsl(var(--primary))' showOnShallow={false} />
+        <LoadingOverlay />
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>

@@ -1,12 +1,10 @@
-import {
-  CharacterCardProps,
-  CharacterCards,
-  CharacterDetail,
-  PlayerCard,
-} from '@/components/card';
+import { CharacterCard, CharacterCardWrapper } from '@/components/card';
 import { GiscusComment } from '@/components/giscus';
+import { HandShakeIcon } from '@/components/icons';
+import { CharacterInfoScreen, ProfileInfoScreen } from '@/components/screens';
+import { Button } from '@/components/ui/button';
 import { useIsomorphicLayoutEffect } from '@/hooks';
-import { cn, createQueryString, removeQueryString } from '@/libs';
+import { createQueryString, removeQueryString } from '@/libs';
 import { ApiService } from '@/services';
 import type {
   GetServerSidePropsContext,
@@ -15,7 +13,7 @@ import type {
 } from 'next';
 import { NextSeo } from 'next-seo';
 import Router, { useRouter } from 'next/router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { UrlObject } from 'url';
 
 const Page = (
@@ -24,36 +22,28 @@ const Page = (
   const { data } = props;
   const { characters = [], player } = data;
 
-  const [selectedCharId, setSelectedCharId] = useState(null);
+  const [selectedCharacterSlot, setSelectedCharacterSlot] = useState(null);
 
   const router = useRouter();
   const { pathname, query } = router;
 
   useIsomorphicLayoutEffect(() => {
-    setSelectedCharId(query.charId ?? null);
-  }, [query.charId]);
+    setSelectedCharacterSlot(parseInt(query.char as string) ?? null);
+  }, [query.char]);
 
-  const mappedCharacterCards = useMemo(() => {
-    return characters.map(
-      (char, index): CharacterCardProps => ({
-        id: char.id as string,
-        src: index === 0 ? char.preview : char.preview,
-        alt: char.name + `'s avatar`,
-        level: char.level,
-        name: char.name,
-      })
-    );
-  }, [characters]);
+  useEffect(() => {
+    console.log('add id');
+  }, []);
 
-  const selectedChar = useMemo(() => {
-    return characters?.find((char) => char.id === selectedCharId);
-  }, [characters, selectedCharId]);
+  const selectedCharacter = useMemo(() => {
+    return characters?.find((char, index) => index === selectedCharacterSlot);
+  }, [characters, selectedCharacterSlot]);
 
-  const handleSelectItem = useCallback(
-    (id: string) => {
+  const handleSelectCharacter = useCallback(
+    (id: any) => {
       const url: UrlObject = {
         pathname: pathname,
-        query: createQueryString({ query, name: 'charId', value: id }),
+        query: createQueryString({ query, name: 'char', value: id }),
       };
       Router.push(url, undefined, { shallow: true });
     },
@@ -63,7 +53,7 @@ const Page = (
   const handleNavigateBack = useCallback(() => {
     const url: UrlObject = {
       pathname: pathname,
-      query: removeQueryString({ query: query, name: 'charId' }),
+      query: removeQueryString({ query: query, name: 'char' }),
     };
 
     Router.push(url, undefined, {
@@ -77,49 +67,43 @@ const Page = (
       <NextSeo title={player.username + `'s Build`} />
 
       <div className='base-container flex max-w-screen-lg flex-col space-y-20'>
-        <h1 className='text-center text-4xl'>{player.username}&apos;s Build</h1>
+        <div className='relative flex items-center justify-center'>
+          {selectedCharacter && (
+            <Button onClick={handleNavigateBack} className='absolute left-0'>
+              Back
+            </Button>
+          )}
+          <h1 className='text-4xl'>{player.username}&apos;s Build</h1>
+        </div>
 
-        {selectedChar ? (
+        {selectedCharacter ? (
           <>
-            <CharacterDetail
-              src={selectedChar.portrait}
+            <CharacterInfoScreen
+              character={selectedCharacter}
               onNavigateBack={handleNavigateBack}
             />
 
-            {selectedChar.attributes.map((stat, index) => (
-              <p key={index}>
-                {stat.name} {stat.value}
-              </p>
-            ))}
+            <CharacterCardWrapper icon={<HandShakeIcon />} text={'Support'}>
+              <div className='grid grid-cols-4 gap-6'>
+                {characters?.map((char, index) => (
+                  <CharacterCard
+                    key={index}
+                    src={char?.preview}
+                    name={char?.name}
+                    level={char?.level}
+                    rarity={char?.rarity}
+                    onSelect={() => handleSelectCharacter(index)}
+                  />
+                ))}
+              </div>
+            </CharacterCardWrapper>
           </>
         ) : (
-          <div className={cn('flex w-full', query?.charId && 'hidden')}>
-            <div className='relative pl-6 pr-10'>
-              <div className='absolute inset-0 -z-1 rounded-e-3xl rounded-s-lg bg-[#181914] shadow-large' />
-              <PlayerCard
-                className='scale-[108%]'
-                src={player.avatar.icon}
-                alt={player.username + `'s avatar: ` + player.avatar?.name}
-                name={player.username}
-                uid={player.uid}
-                trailblazerLevel={player.level}
-                equilibriumLevel={player.worldLevel}
-                birthDay={null}
-                signature={player.signature}
-                charactersCount={player.charactersCount}
-                achievementsCount={player.achievementCount}
-              />
-            </div>
-
-            <div className='relative flex flex-1 items-center pl-12 pr-10'>
-              <div className='absolute inset-0 -z-1 rounded-e-lg rounded-s-3xl bg-gradient-to-br from-[#282828] to-[#271f14] shadow-large' />
-
-              <CharacterCards
-                itemList={mappedCharacterCards}
-                onItemSelect={handleSelectItem}
-              />
-            </div>
-          </div>
+          <ProfileInfoScreen
+            player={player}
+            characters={characters}
+            onCharacterSelect={handleSelectCharacter}
+          />
         )}
 
         <GiscusComment term='Profile Comment' />

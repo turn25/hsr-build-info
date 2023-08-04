@@ -37,6 +37,22 @@
     user-select: none;
     -webkit-user-drag: none;
   }
+
+  body {
+    @apply scrollbar scrollbar-track-transparent scrollbar-thumb-slate-500 scrollbar-thumb-rounded-[100px] scrollbar-w-[16px] hover:scrollbar-thumb-slate-400;
+    @screen lg {
+      overflow-y: scroll;
+    }
+  }
+  body::-webkit-scrollbar-thumb {
+    @apply border-4 border-solid border-transparent bg-clip-padding;
+  }
+
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    img[loading='lazy'] {
+      clip-path: inset(0.6px);
+    }
+  }
 }
 
 @layer components {

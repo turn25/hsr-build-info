@@ -13,7 +13,7 @@ const MainLayout = (props: MainLayoutProps) => {
 
   return (
     <div className='relative flex min-h-screen flex-col'>
-      <div className='absolute inset-0 -z-[1] overflow-hidden '>
+      <div className='fixed inset-0 -z-[1] overflow-hidden '>
         <Image
           tabIndex={0}
           src={backgroundSrc}
@@ -25,7 +25,7 @@ const MainLayout = (props: MainLayoutProps) => {
         />
       </div>
       <Navbar />
-      <main id='main-content' className='mt-12 flex-1 py-8'>
+      <main id='main-content' className='mt-4 flex-1 py-8'>
         {children}
       </main>
       <Footer />

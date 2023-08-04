@@ -12,7 +12,7 @@ import { MusicToggleButton } from './music-toggle';
 
 const Navbar = () => {
   return (
-    <header className='background sticky top-0 border-b'>
+    <header className='background sticky top-0 z-[1000] border-b'>
       <div className='base-container flex h-[65px] items-center justify-between'>
         <Logo />
 
@@ -22,18 +22,18 @@ const Navbar = () => {
               <TooltipTrigger asChild>
                 <Button
                   asChild
+                  size='icon'
                   variant='plain'
                   className='max-lg:h-10 max-lg:w-10 max-lg:p-0'
                 >
                   <a
-                    href={config.github.githubAuthorUrl}
+                    href={config.github.githubRepoUrl}
                     target='_blank'
                     rel='noreferrer'
                     className='inline-flex items-center'
                   >
                     <GithubIcon />
-                    <span className='sr-only'>Github User Account</span>
-                    <span className='hidden lg:inline'>turn25/sr-info</span>
+                    <span className='sr-only'>Github Repo</span>
                   </a>
                 </Button>
               </TooltipTrigger>
