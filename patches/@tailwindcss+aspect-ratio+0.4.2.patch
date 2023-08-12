@@ -1,0 +1,50 @@
+diff --git a/node_modules/@tailwindcss/aspect-ratio/.github/ISSUE_TEMPLATE/1.bug_report.yml b/node_modules/@tailwindcss/aspect-ratio/.github/ISSUE_TEMPLATE/1.bug_report.yml
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/.github/ISSUE_TEMPLATE/config.yml b/node_modules/@tailwindcss/aspect-ratio/.github/ISSUE_TEMPLATE/config.yml
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/.github/workflows/release-insiders.yml b/node_modules/@tailwindcss/aspect-ratio/.github/workflows/release-insiders.yml
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/CHANGELOG.md b/node_modules/@tailwindcss/aspect-ratio/CHANGELOG.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/README.md b/node_modules/@tailwindcss/aspect-ratio/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/src/index.d.ts b/node_modules/@tailwindcss/aspect-ratio/src/index.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@tailwindcss/aspect-ratio/src/index.js b/node_modules/@tailwindcss/aspect-ratio/src/index.js
+old mode 100644
+new mode 100755
+index a217a70..6c1ae08
+--- a/node_modules/@tailwindcss/aspect-ratio/src/index.js
++++ b/node_modules/@tailwindcss/aspect-ratio/src/index.js
+@@ -1,8 +1,13 @@
+ const plugin = require('tailwindcss/plugin')
+ 
+ const baseStyles = {
++  '--tw-aspect-ratio': `calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%)`,
+   position: 'relative',
+-  paddingBottom: `calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%)`,
++  '&::before': {
++    content: '""',
++    display:'block',
++    paddingBottom: 'var(--tw-aspect-ratio)',
++  },
+ }
+ 
+ const childStyles = {
+@@ -13,6 +18,7 @@ const childStyles = {
+   right: '0',
+   bottom: '0',
+   left: '0',
++  overflow:'hidden',
+ }
+ 
+ const noneComponent = {
+diff --git a/node_modules/@tailwindcss/aspect-ratio/tests/test.js b/node_modules/@tailwindcss/aspect-ratio/tests/test.js
+old mode 100644
+new mode 100755

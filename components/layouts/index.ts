@@ -1,2 +1,2 @@
-export * from './loading';
+export * from './loading-overlay';
 export * from './main-layout';

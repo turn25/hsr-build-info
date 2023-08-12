@@ -1,12 +1,19 @@
 import '@/styles/index.css';
 
-import { LoadingOverlay, MainLayout } from '@/components/layouts';
+import { MainLayout } from '@/components/layouts';
 import { defaultSEOConfig } from '@/components/seo';
 import { SRFont } from '@/libs';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
-import NextNProgress from 'nextjs-progressbar';
+import dynamic from 'next/dynamic';
+
+const LoadingOverlay = dynamic(
+  () => import('@/components/layouts').then((mod) => mod.LoadingOverlay),
+  {
+    ssr: false,
+  }
+);
 
 const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
@@ -26,7 +33,6 @@ const MyApp = (props: AppProps) => {
         attribute='data-theme'
         defaultTheme='dark'
       >
-        <NextNProgress color='hsl(var(--primary))' showOnShallow={false} />
         <LoadingOverlay />
         <MainLayout>
           <Component {...pageProps} />

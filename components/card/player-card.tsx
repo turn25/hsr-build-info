@@ -82,10 +82,8 @@ const PlayerAvatarFrame = (props: PlayerAvatarFrameProps) => {
           className='scale-[108%] object-cover opacity-75'
         />
       </div>
-      <div className='w-[84px] -translate-y-[20%] overflow-hidden rounded-full border-[2px] border-[#98937f] bg-[#8b8279]'>
-        <div className='aspect-h-1 aspect-w-1'>
-          <img src={src} alt={alt} loading='lazy' className='object-cover' />
-        </div>
+      <div className='aspect-h-1 aspect-w-1 w-[84px] -translate-y-[20%] overflow-hidden rounded-full border-[2px] border-[#98937f] bg-[#8b8279]'>
+        <img src={src} alt={alt} loading='lazy' className='object-cover' />
       </div>
       <div className='relative mx-auto -mt-2 mb-4 h-10 w-full max-w-[70%] text-ellipsis text-center text-2xl text-contrast'>
         <input

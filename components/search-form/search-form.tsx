@@ -1,4 +1,7 @@
-import { useAutosizeHeight, useToggleCmdk } from '@/hooks';
+import { useToggleCmdk } from '@/hooks';
+import { cn } from '@/libs';
+import { Button } from '@/ui/button';
+import { Checkbox } from '@/ui/checkbox';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Router from 'next/router';
 import { useCallback, useRef } from 'react';
@@ -16,14 +19,12 @@ const SearchForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    control,
+    formState: { errors, isDirty, isValid },
   } = useForm<SearchFormType>({
     resolver: zodResolver(formSchema),
     mode: 'all',
   });
 
-  const { cssVarSelector, elementRef, wrapperRef } = useAutosizeHeight();
   // input
   const { ref: uidInputRef, ...uidInputRest } = register('uid');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -49,30 +50,36 @@ const SearchForm = () => {
           inputRef.current?.blur();
         }
       }}
-      className='mx-auto rounded-2xl bg-background/25 shadow-medium backdrop-blur-lg'
     >
-      <div
-        ref={wrapperRef}
-        style={{ height: cssVarSelector }}
-        className='transition-[height]'
-      >
-        <div ref={elementRef} className='flex flex-col space-y-6 p-6'>
-          <div className='flex flex-col space-y-4'>
-            <label htmlFor={uidInputRest.name} className='sr-only'>
-              Search Trailblazer Profile
-            </label>
+      <div className='flex flex-col space-y-5'>
+        <label htmlFor={uidInputRest.name} className='sr-only'>
+          Search Trailblazer Profile
+        </label>
 
-            <SearchInput
-              {...uidInputRest}
-              hasError={hasError}
-              ref={(e) => {
-                uidInputRef(e);
-                inputRef.current = e;
-              }}
-            />
+        <div className='flex items-center space-x-4'>
+          <SearchInput
+            hasError={hasError}
+            {...uidInputRest}
+            ref={(e) => {
+              uidInputRef(e);
+              inputRef.current = e;
+            }}
+          />
 
-            {hasError && <p className='text-red-500'>{errors.uid.message}</p>}
-          </div>
+          <Button
+            type='submit'
+            variant={isValid ? 'default' : 'outline'}
+            size='default'
+          >
+            Search
+          </Button>
+        </div>
+
+        <div className={cn('flex items-center space-x-2')}>
+          <Checkbox checked={isDirty && !hasError} />
+          <p className={cn(isDirty && !hasError && 'line-through opacity-75')}>
+            Need at least 9 characters
+          </p>
         </div>
       </div>
     </form>

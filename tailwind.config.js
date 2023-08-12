@@ -29,6 +29,9 @@ module.exports = {
           light: '#e0e3ea',
         },
       },
+      borderRadius: {
+        '4xl': '1.75rem',
+      },
       boxShadow: {
         small:
           '0px 0px 5px 0px rgba(0,0,0,.02),0px 2px 10px 0px rgba(0,0,0,.06),0px 0px 1px 0px rgba(0,0,0,.3)',
@@ -45,6 +48,7 @@ module.exports = {
       data: {
         open: 'state="open"',
         closed: 'state="closed"',
+        checked: 'state="checked"',
         'delayed-open': 'state="delayed-open"',
         'instant-open': 'state="instant-open"',
         'slide-bottom': 'slide="bottom"',

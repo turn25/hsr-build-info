@@ -1,4 +1,4 @@
-import { GiscusComment } from '@/components/giscus';
+import { ProfilePreviewScreen } from '@/components/screens/profile-preview';
 import { SearchForm } from '@/components/search-form';
 
 const HomePage = () => {
@@ -8,29 +8,13 @@ const HomePage = () => {
         Star Rail Profile Build Info
       </h1>
 
-      <SearchForm />
+      <div className='space-y-8'>
+        <SearchForm />
 
-      {/* <div className='grid grid-cols-2 gap-4'>
-        <FollowCard
-          href={config.github.githubAuthorUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-          icon={<HertaDance />}
-          iconText='turn25'
-          description='Hello'
-        />
+        <ProfilePreviewScreen />
+      </div>
 
-        <FollowCard
-          href={config.github.githubRepoUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-          icon={<GithubIcon />}
-          iconText='Project Repo'
-          description='To report bugs, request features, or contribute to this project...'
-        />
-      </div> */}
-
-      <GiscusComment />
+      {/* <GiscusComment /> */}
     </div>
   );
 };

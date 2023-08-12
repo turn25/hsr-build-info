@@ -13,7 +13,8 @@ const MainLayout = (props: MainLayoutProps) => {
 
   return (
     <div className='relative flex min-h-screen flex-col'>
-      <div className='fixed inset-0 -z-[1] overflow-hidden '>
+      {/* RemoveScroll.className.fullWidth */}
+      <div className='width-before-scroll-bar fixed inset-0 -z-[1] overflow-hidden opacity-80'>
         <Image
           tabIndex={0}
           src={backgroundSrc}
@@ -25,7 +26,7 @@ const MainLayout = (props: MainLayoutProps) => {
         />
       </div>
       <Navbar />
-      <main id='main-content' className='mt-4 flex-1 py-8'>
+      <main id='main-content' className='flex-1 py-16'>
         {children}
       </main>
       <Footer />

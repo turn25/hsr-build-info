@@ -17,7 +17,11 @@ const Logo = () => {
   );
 
   return (
-    <a href='/' onClick={handleClick} className='inline-flex items-center'>
+    <a
+      href='/'
+      onClick={handleClick}
+      className='inline-flex items-center rounded-xl'
+    >
       <div className='relative mr-2 h-10 w-12 overflow-hidden'>
         <HertaDance
           alt='website logo'

@@ -1,4 +1,7 @@
 import { cn } from '@/libs';
+import MainCharacterBackground from '@/public/images/main-char-profile-bg.png';
+import SubCharacterBackground from '@/public/images/sub-char-profile-bg.png';
+import Image from 'next/image';
 import { ReactNode } from 'react';
 
 export interface CharacterCardProps {
@@ -23,14 +26,20 @@ const MainCharacterCard = (props: CharacterCardProps) => {
           onSelect();
         }
       }}
-      className={cn(
-        'group relative cursor-pointer select-none rounded-sm bg-gradient-to-tr transition-all hover:grayscale-[20%]',
-        rarity === 5
-          ? 'from-[#bc7a60] to-[#c5a977]'
-          : 'from-[#7c55b6] to-[#916acc]'
-      )}
+      className='group relative cursor-pointer select-none rounded-sm bg-gradient-to-tr transition-all hover:grayscale-[20%]'
     >
       <div className='aspect-h-6 aspect-w-16' />
+
+      <Image
+        src={MainCharacterBackground}
+        alt=''
+        width={300}
+        priority
+        className={cn(
+          'absolute inset-0 z-0 h-full w-full object-fill',
+          rarity === 4 && '-hue-rotate-[110deg]'
+        )}
+      />
 
       <img
         src={src}
@@ -62,13 +71,18 @@ const CharacterCard = (props: CharacterCardProps) => {
           onSelect();
         }
       }}
-      className={cn(
-        'group relative cursor-pointer select-none overflow-hidden rounded-sm rounded-b-md bg-gradient-to-tr transition-all hover:grayscale-[20%]',
-        rarity === 5
-          ? 'from-[#e2c38c] to-[#dd9a91]'
-          : 'from-[#7c55b6] to-[#916acc]'
-      )}
+      className='group relative cursor-pointer select-none overflow-hidden rounded-sm rounded-b-md bg-gradient-to-tr transition-all hover:grayscale-[20%]'
     >
+      <Image
+        src={SubCharacterBackground}
+        alt=''
+        width={180}
+        className={cn(
+          'absolute inset-0 z-0 h-full w-full scale-105 object-cover',
+          rarity === 4 && '-hue-rotate-[110deg]'
+        )}
+      />
+
       <div className='aspect-h-10 aspect-w-8 w-full transition-all duration-200 group-hover:scale-110 group-hover:brightness-110'>
         <img
           src={src}

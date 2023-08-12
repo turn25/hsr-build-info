@@ -1,6 +1,6 @@
 import { useGlobalStore } from '@/store';
 import { Button } from '@/ui/button';
-import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid';
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/20/solid';
 import {
   ComponentPropsWithoutRef,
   ComponentRef,

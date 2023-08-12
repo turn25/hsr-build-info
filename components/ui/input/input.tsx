@@ -14,7 +14,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <Comp
         ref={ref}
         className={cn(
-          'inline-flex min-h-[48px] rounded-xl bg-background/75 px-4 py-2 placeholder:opacity-75',
+          'inline-flex min-h-[40px] rounded-full border-2 border-white/50 bg-black/25 px-4 py-2 placeholder:opacity-70',
           className
         )}
         {...props}

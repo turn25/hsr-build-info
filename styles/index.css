@@ -15,9 +15,13 @@
   * {
     @apply border-border;
   }
+  *:focus-visible {
+    outline: none;
+  }
   html {
-    border-color: var(--border);
-    color: var(--contrast);
+    border-color: theme(colors.border);
+    color: theme(colors.contrast);
+    background-color: theme(colors.background);
     -webkit-tap-highlight-color: transparent;
     outline-color: transparent;
   }
@@ -29,6 +33,12 @@
     cursor: pointer;
     user-select: none;
   }
+  input,
+  a,
+  button {
+    @apply ring-white ring-offset-0 focus-visible:ring-2;
+  }
+
   img,
   video {
     display: block;
@@ -57,7 +67,7 @@
 
 @layer components {
   .base-container {
-    @apply mx-auto box-border block w-full max-w-screen-md px-6;
+    @apply mx-auto box-border block w-full max-w-screen-lg px-6;
   }
 
   .background {
@@ -92,12 +102,4 @@
   --contrast: #fff;
   --background: 240 10% 3.9%;
   --border: 240 3.7% 15.9%;
-}
-
-.gsc-reactions {
-  color: red;
-}
-
-.gsc-reactions-count {
-  color: red !important;
 }

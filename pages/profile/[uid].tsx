@@ -22,6 +22,8 @@ const Page = (
   const { data } = props;
   const { characters = [], player } = data;
 
+  console.log(data);
+
   const [selectedCharacterSlot, setSelectedCharacterSlot] = useState(null);
 
   const router = useRouter();
@@ -66,7 +68,7 @@ const Page = (
       {/* SEO */}
       <NextSeo title={player.username + `'s Build`} />
 
-      <div className='base-container flex max-w-screen-lg flex-col space-y-20'>
+      <div className='base-container flex flex-col space-y-20'>
         <div className='relative flex items-center justify-center'>
           {selectedCharacter && (
             <Button onClick={handleNavigateBack} className='absolute left-0'>

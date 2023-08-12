@@ -33,10 +33,8 @@ const CharacterInfoScreen = (props: CharacterInfoScreenProps) => {
 
   return (
     <div className='overflow-hidden'>
-      <div className='w-1/3'>
-        <div className='aspect-h-16 aspect-w-9 rounded-xl border-2'>
-          <img src={character.portrait} alt='' className='object-cover' />
-        </div>
+      <div className='aspect-h-16 aspect-w-9 w-1/3 rounded-xl border-2'>
+        <img src={character.portrait} alt='' className='object-cover' />
       </div>
       {character.name}
       <div className='space-y-2'>
