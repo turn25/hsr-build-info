@@ -59,9 +59,9 @@ const ProfilePreviewCard = (props: ProfilePreviewCardProps) => {
       href={'/profile/' + uid}
       tabIndex={0}
       title={title}
-      className='block cursor-pointer overflow-hidden rounded-se-4xl border-l-4 border-[#DDE1E4] bg-[#F5F5F5] shadow-small transition-all hover:brightness-105 focus-visible:brightness-105'
+      className='block cursor-pointer overflow-hidden rounded-se-4xl border-l-4 border-[#DDE1E4]/95 bg-white/95 shadow-small transition-all hover:brightness-105 focus-visible:brightness-105'
     >
-      <div className='ml-3 flex rounded-s-full bg-[#DDE1E4]'>
+      <div className='ml-3 flex rounded-s-full bg-[#DDE1E4]/95'>
         <div className='flex flex-1 overflow-hidden p-3'>
           {/* avatar */}
           <div className='relative w-20 shrink-0 rounded-full border border-dotted border-text-default/25 p-1'>

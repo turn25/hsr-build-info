@@ -75,9 +75,22 @@ const SearchForm = () => {
           </Button>
         </div>
 
-        <div className={cn('flex items-center space-x-2')}>
-          <Checkbox checked={isDirty && !hasError} />
-          <p className={cn(isDirty && !hasError && 'line-through opacity-75')}>
+        <div
+          className={cn(
+            'flex items-center space-x-2',
+            hasError && 'text-red-500'
+          )}
+        >
+          <Checkbox
+            checked={isDirty && !hasError}
+            className={hasError && 'bg-red-500'}
+          />
+          <p
+            className={cn(
+              isDirty && !hasError && 'line-through opacity-75',
+              'text-current'
+            )}
+          >
             Need at least 9 characters
           </p>
         </div>
