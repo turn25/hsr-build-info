@@ -31,7 +31,6 @@ const ProfilePreviewScreen = () => {
             level={profile?.level}
             avatarImg={profile?.avatar}
             characterImg={profile?.characterImg}
-            searchDate={profile?.updatedAt}
             slug={profile?.uid}
           />
         ))}
