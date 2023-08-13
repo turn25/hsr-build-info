@@ -68,11 +68,11 @@
 
 @layer components {
   .base-container {
-    @apply mx-auto box-border block w-full max-w-screen-lg px-6;
+    @apply mx-auto box-border block w-full max-w-screen-xl px-6;
   }
 
   .background {
-    @apply bg-background backdrop-blur-xl backdrop-saturate-150;
+    @apply bg-background/75 backdrop-blur-lg backdrop-saturate-150;
   }
 }
 
@@ -93,9 +93,55 @@
     @apply !mt-0;
   }
 
+  .gradient-overlay {
+    @apply bg-gradient-to-r from-black/60 to-transparent to-60%;
+  }
+
   .animate-in,
   .animate-out {
     animation-fill-mode: both;
+  }
+
+  .background-overlay-pattern {
+    --pattern-color: #696969;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--pattern-color) 0,
+        var(--pattern-color) 10%,
+        transparent 0,
+        transparent 50%
+      ),
+      repeating-linear-gradient(
+        135deg,
+        var(--pattern-color) 0,
+        var(--pattern-color) 10%,
+        transparent 0,
+        transparent 50%
+      );
+    background-size: 1em 1em;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .mask-feather-image {
+    /* mask-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1%,
+      rgba(114, 114, 114, 0.5) 6%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(114, 114, 114, 0.5) 94%,
+      rgba(255, 255, 255, 0) 99%
+    ); */
+
+    mask-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1%,
+      rgba(114, 114, 114, 0.5) 10%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 100%
+    );
   }
 }
 

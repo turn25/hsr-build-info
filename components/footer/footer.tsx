@@ -6,7 +6,7 @@ import { GithubIcon } from '../icons';
 const Footer = () => {
   return (
     <footer className='background relative border-t'>
-      <div className='absolute left-0 right-0 top-0 z-20 -translate-y-full overflow-hidden'>
+      <div className='absolute -top-[1px] left-0 right-0 z-50 -translate-y-full overflow-hidden'>
         <HertaDance className='-translate-x-full ease-linear repeat-infinite data-animate:duration-4s data-animate:animate-in data-animate:slide-in-from-right-[100vw] data-animate:lg:duration-12s' />
       </div>
 

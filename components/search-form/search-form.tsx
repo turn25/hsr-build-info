@@ -56,7 +56,7 @@ const SearchForm = () => {
           Search Trailblazer Profile
         </label>
 
-        <div className='flex items-center space-x-4'>
+        <div className='flex flex-col items-stretch max-md:space-y-3 md:flex-row md:items-center md:space-x-4'>
           <SearchInput
             hasError={hasError}
             {...uidInputRest}
@@ -70,6 +70,7 @@ const SearchForm = () => {
             type='submit'
             variant={isValid ? 'default' : 'outline'}
             size='default'
+            // className='w-full'
           >
             Search
           </Button>

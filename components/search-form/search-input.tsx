@@ -23,8 +23,8 @@ const SearchInput = forwardRef<ComponentRef<typeof Input>, SearchInputProps>(
         <Input
           ref={ref}
           className={cn(
-            'z-0 w-full cursor-pointer pr-12'
-            // hasError && 'border-red-500'
+            'z-0 w-full cursor-pointer pr-12',
+            hasError && 'ring-red-500'
           )}
           placeholder='Enter Trailblazer UID To Search Profile!'
           autoComplete='false'

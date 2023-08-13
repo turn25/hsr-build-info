@@ -1,2 +1,3 @@
-export * from './character-info-screen';
-export * from './profile-info-screen';
+export * from './character-info';
+export * from './profile-info';
+export * from './profile-preview';

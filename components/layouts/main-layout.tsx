@@ -14,19 +14,26 @@ const MainLayout = (props: MainLayoutProps) => {
   return (
     <div className='relative flex min-h-screen flex-col'>
       {/* RemoveScroll.className.fullWidth */}
-      <div className='width-before-scroll-bar fixed inset-0 -z-[1] overflow-hidden opacity-80'>
+      <div className='width-before-scroll-bar pointer-events-none fixed inset-0 -z-1 overflow-hidden opacity-80'>
         <Image
           tabIndex={0}
           src={backgroundSrc}
           alt={'background image'}
           placeholder='blur'
-          width={100}
+          width={120}
+          quality={50}
           priority
-          className='pointer-events-none scale-110 object-cover blur-xl'
+          className='scale-110 object-cover blur-xl'
         />
       </div>
+      <div className='background-overlay-pattern width-before-scroll-bar pointer-events-none fixed inset-0 -z-1 opacity-10 blur-sm' />
+
       <Navbar />
       <main id='main-content' className='flex-1 py-16'>
+        <p className='base-container background mb-8 rounded-xl border p-4 text-center text-5xl'>
+          WIP
+        </p>
+
         {children}
       </main>
       <Footer />
