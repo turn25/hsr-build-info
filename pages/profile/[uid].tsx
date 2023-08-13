@@ -117,6 +117,11 @@ const Page = (
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
+  context.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=3600, stale-while-revalidate=59'
+  );
+
   const uid = context.query?.uid as string;
   const lang = context.query?.lang as string;
 
